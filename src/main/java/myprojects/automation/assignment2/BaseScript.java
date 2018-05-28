@@ -13,7 +13,7 @@ import static myprojects.automation.assignment2.utils.Properties.getBrowser;
 public abstract class BaseScript {
 
     /**
-     * @return New instance of {@link WebDriver} object.
+     * @return New instance of {@link WebDriver} object according to DEFAULT_BROWSER property.
      */
     public static WebDriver getDriver() {
         switch (getBrowser()) {
