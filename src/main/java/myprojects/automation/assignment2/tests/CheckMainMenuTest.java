@@ -13,7 +13,7 @@ import static myprojects.automation.assignment2.utils.Properties.getBaseAdminUrl
 
 public class CheckMainMenuTest extends BaseScript {
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
         // TODO Script to check Main Menu items
         WebDriver driver = getDriver();
         driver.get(getBaseAdminUrl());
@@ -21,12 +21,8 @@ public class CheckMainMenuTest extends BaseScript {
         driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
         //List of main menu items
         List<WebElement> list = driver.findElements(By.xpath("//li[contains(@class,'maintab')]"));
-        //List of main menu items' ids
-        List<String> ids = new ArrayList<>();
-        //Fill in list of ids
-        for (WebElement element : list) {
-            ids.add(element.getAttribute("data-submenu"));
-        }
+        //Get list of main menu items' data-submenu ids
+        ArrayList<String> ids = new ArrayList<String>(){{list.forEach(element->add(element.getAttribute("data-submenu")));}};
         //Run the tests for each main menu item
         for (String id : ids) {
             WebElement Tab = driver.findElement(By.xpath("//li[@data-submenu='" + id + "']"));

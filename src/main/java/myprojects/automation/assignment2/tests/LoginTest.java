@@ -29,7 +29,7 @@ public class LoginTest extends BaseScript {
         logout.click();
     }
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
         WebDriver driver = getDriver();
         driver.get(getBaseAdminUrl());
         Login(driver);
