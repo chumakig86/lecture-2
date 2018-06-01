@@ -2,7 +2,6 @@ package myprojects.automation.assignment2.tests;
 
 import myprojects.automation.assignment2.BaseScript;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -10,8 +9,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import static myprojects.automation.assignment2.utils.Properties.getBaseAdminUrl;
 
 public class LoginTest extends BaseScript {
+
     // Method that implements Login functionality
-    public static void Login(WebDriver driver) {
+    public static void Login() {
         WebElement email = driver.findElement(By.id("email"));
         WebElement passwd = driver.findElement(By.id("passwd"));
         WebElement submit = driver.findElement(By.name("submitLogin"));
@@ -19,8 +19,9 @@ public class LoginTest extends BaseScript {
         passwd.sendKeys("Xcg7299bnSmMuRLp9ITw");
         submit.click();
     }
+
     //Method that implements logout functionality
-    public static void Logout(WebDriver driver) {
+    public static void Logout() {
         (new WebDriverWait(driver, 4))
                 .until(ExpectedConditions.presenceOfElementLocated(By.className("img-thumbnail")));
         WebElement user = driver.findElement(By.className("img-thumbnail"));
@@ -30,10 +31,9 @@ public class LoginTest extends BaseScript {
     }
 
     public static void main(String[] args) {
-        WebDriver driver = getDriver();
         driver.get(getBaseAdminUrl());
-        Login(driver);
-        Logout(driver);
+        Login();
+        Logout();
         driver.quit();
 
     }

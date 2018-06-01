@@ -11,11 +11,12 @@ import static myprojects.automation.assignment2.utils.Properties.getBrowser;
  * Base script functionality, can be used for all Selenium scripts.
  */
 public abstract class BaseScript {
+    public static WebDriver driver = getDriver();
 
     /**
      * @return New instance of {@link WebDriver} object according to DEFAULT_BROWSER property.
      */
-    public static WebDriver getDriver() {
+    private static WebDriver getDriver() {
         switch (getBrowser()) {
             case "chrome":
                 System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
@@ -26,7 +27,8 @@ public abstract class BaseScript {
             case "firefox":
                 System.setProperty("webdriver.gecko.driver", "src/main/resources/geckodriver.exe");
                 return new FirefoxDriver();
-            default: throw new UnsupportedOperationException("Method doesn't return WebDriver instance");
+            default:
+                throw new UnsupportedOperationException("Method doesn't return WebDriver instance");
         }
     }
 }
